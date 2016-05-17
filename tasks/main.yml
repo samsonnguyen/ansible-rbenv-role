@@ -55,7 +55,7 @@
   become: yes
   become_user: "{{ item }}"
   when: rbenv.env != "system"
-  ignore_errors: yes
+  # ignore_errors: yes
   tags:
     - rbenv
 
@@ -65,7 +65,7 @@
   become: yes
   become_user: "{{ item }}"
   when: rbenv.env != "system"
-  ignore_errors: yes
+  # ignore_errors: yes
   tags:
     - rbenv
 
@@ -82,7 +82,7 @@
   become: yes
   become_user: "{{ item[0] }}"
   when: rbenv.env != "system"
-  ignore_errors: yes
+  # ignore_errors: yes
   tags:
     - rbenv
 
@@ -102,7 +102,7 @@
   when:
     - not "system" == "{{ rbenv.env }}"
     - default_gems_file is not defined
-  ignore_errors: yes
+  # ignore_errors: yes
   tags:
     - rbenv
 
@@ -114,7 +114,7 @@
   when:
     - not "system" == "{{ rbenv.env }}"
     - default_gems_file is defined
-  ignore_errors: yes
+  # ignore_errors: yes
   tags:
     - rbenv
 
@@ -124,7 +124,7 @@
   become: yes
   become_user: "{{ item }}"
   when: rbenv.env != "system"
-  ignore_errors: yes
+  # ignore_errors: yes
   tags:
     - rbenv
 
@@ -134,7 +134,7 @@
   become: yes
   become_user: "{{ item }}"
   when: rbenv.env != "system"
-  ignore_errors: yes
+  # ignore_errors: yes
   tags:
     - rbenv
 
@@ -142,7 +142,7 @@
   shell: $SHELL -lc "rbenv versions | grep {{ rbenv.ruby_version }}"
   register: ruby_installed
   changed_when: false
-  ignore_errors: yes
+  # ignore_errors: yes
   always_run: yes
   when: rbenv.env == "system"
   tags:
@@ -161,7 +161,7 @@
   shell: $SHELL -lc "rbenv version | cut -d ' ' -f 1 | grep -Fx '{{ rbenv.ruby_version }}'"
   register: ruby_selected
   changed_when: false
-  ignore_errors: yes
+  # ignore_errors: yes
   always_run: yes
   when: rbenv.env == "system"
   tags:
@@ -184,7 +184,7 @@
   when: rbenv.env != "system"
   register: ruby_installed
   changed_when: false
-  ignore_errors: yes
+  # ignore_errors: yes
   always_run: yes
   tags:
     - rbenv
@@ -199,7 +199,7 @@
   when:
     - rbenv.env != "system"
     - item[0].rc != 0
-  ignore_errors: yes
+  # ignore_errors: yes
   tags:
     - rbenv
 
@@ -211,7 +211,7 @@
   when: rbenv.env != "system"
   register: ruby_selected
   changed_when: false
-  ignore_errors: yes
+  # ignore_errors: yes
   always_run: yes
   tags:
     - rbenv
@@ -226,6 +226,6 @@
   when:
     - rbenv.env != "system"
     - item[0].rc != 0
-  ignore_errors: yes
+  # ignore_errors: yes
   tags:
     - rbenv
